@@ -29,7 +29,6 @@ func getMultipassNodes() []multipassEntry {
 	var entries []multipassEntry = nil
 	for _, line := range lines {
 		entry := strings.Fields(line)
-		log.Println(entry)
 		entries = append(entries, multipassEntry{
 			Hostname: entry[0],
 			IP:       entry[2],
@@ -47,6 +46,7 @@ func performNodeAction(node multipassEntry) {
 	var options []string
 
 	// #TODO: Learn all the states Multipass nodes can be in
+	// #TODO: Figure out a way to display Multipass spinning during launch
 	switch node.State {
 	case "Running":
 		options = []string{"shell", "stop", "restart", "delete"}
